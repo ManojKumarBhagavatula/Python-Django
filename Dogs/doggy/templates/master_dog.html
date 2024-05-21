@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Your CSS styles for master_dog.html */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        .dog-details {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        .dog-details img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            margin-bottom: 10px;
+        }
+
+        .dog-details h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .dog-details p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .dog-details span {
+            font-weight: bold;
+            color: #777;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+    <title>Dog Details</title>
+</head>
+<body>
+    <div class="dog-details">
+        <img src="{{ dog.image.url }}" alt="{{ dog.name }}">
+        <h2>{{ dog.name }}</h2>
+        <p>Breed: {{ dog.breed }}</p>
+        <p>Age: {{ dog.age }}</p>
+        <p>Date Registered: <span>{{ dog.date_registered }}</span></p>
+        <!-- Add other dog details as needed -->
+        <a href="{% url 'delete_dogs' dog.pk %}">Delete_Dog</a>
+        <a href="{% url 'view_dogs' %}">All_Dogs</a>
+        <a href="{% url 'dog_update' dog.pk %}">Update_Dog</a>
+    </div>
+</body>
+</html>

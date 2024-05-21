@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* styles.css */
+
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+/* Dog card styles */
+.dog-list {
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    padding : 1REM 2REM;
+    gap: 20px;
+}
+
+.dog-card {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width : 200px;
+}
+
+.dog-card img {
+    width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  margin-bottom: 10px;
+
+}
+
+.dog-card h2 {
+    font-size: 18px;
+    color: #333;
+}
+
+.dog-card p {
+    font-size: 14px;
+    color: #555;
+}
+.dog-card a {
+    text-decoration: none;
+}
+    </style>
+    <title>View Dogs</title>
+</head>
+<body>
+    <h1>Available Dogs</h1>
+    <div class="dog-list">
+        {% for dog in dogs %}
+        <div class="dog-card">
+            <a href="{% url 'master_dog' dog.pk %}">
+                <img src="{{ dog.image.url }}" alt="{{ dog.name }}">
+                <h2>{{ dog.name }}</h2>
+                <p>Breed: {{ dog.breed }}</p>
+            </a>
+        </div>
+        {% endfor %}
+        <a href="{% url 'add_dogs' %}"></a>
+       
+    </div>
+</body>
+</html>
+
