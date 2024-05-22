@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Word Search</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'homecss.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Word Search</h1>
+        <form id="searchForm">
+            <input type="text" id="searchInput" name="search" placeholder="Enter a word">
+            <button type="submit">Search</button>
+        </form>
+        <div id="searchResult"></div>
+    </div>
+    <script src="{% static 'searchjs.js' %}"></script>
+</body>
+</html>
