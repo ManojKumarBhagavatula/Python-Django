@@ -1,0 +1,41 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiffin Ordering System</title>
+    <link rel="stylesheet" href="{% static 'homepage.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Tiffin Ordering System</h1>
+        <nav>
+            <a href="{% url 'cold_drinks' %}">View Cool Drinks</a>
+            <a href="{% url 'cart' %}">View Cart</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Our Tiffins</h2>
+        <div class="tiffin-list">
+            {% for tiffin in tiffins %}
+                <div class="tiffin-item">
+                    <img src="{{ tiffin.image.url }}" alt="{{ tiffin.name }}">
+                    <h3>{{ tiffin.name }}</h3>
+                    <p>Price: ₹{{ tiffin.price }}</p>
+                    <form method="post" action="{% url 'add_to_cart' tiffin.id 'tiffin' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1"> <!-- Or allow user input -->
+                        <button type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Tiffin Ordering System</p>
+    </footer>
+</body>
+</html>
