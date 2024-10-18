@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard App</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% block extra_head %}{% endblock %}  <!-- Allow extending CSS on specific pages -->
+</head>
+
+<body>
+    <div class="container">
+        <!-- Left Pane for Navigation -->
+        <div class="left-pane">
+            <ul>
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'add_subject' %}">+ Subject</a></li>
+                {% if user.is_authenticated %}
+                <li>
+                    <!-- Logout button as a POST form -->
+                    <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit">
+                            Logout
+                        </button>
+                    </form>
+                </li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <!-- Right Pane for Main Content -->
+        <div class="right-pane">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <!-- JavaScript for Modal Functionality -->
+    <script>
+        // Open modal
+        function openModal(id) {
+            document.getElementById('flashcard-modal-' + id).style.display = 'flex';
+        }
+
+        // Close modal
+        function closeModal(id) {
+            document.getElementById('flashcard-modal-' + id).style.display = 'none';
+        }
+
+        // Turn card to show answer
+        function turnCard(id) {
+            let answerElement = document.getElementById('answer-' + id);
+            if (answerElement.style.display === 'none') {
+                answerElement.style.display = 'block';
+            } else {
+                answerElement.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

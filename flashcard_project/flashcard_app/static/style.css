@@ -1,0 +1,315 @@
+/* General Styling */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #1d3557;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Paragraphs */
+p {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Container Layout */
+.container {
+    display: flex;
+    min-height: 100vh;
+    flex-wrap: wrap; /* Added for better responsive behavior */
+    justify-content: space-between; /* Ensures content is spaced well */
+}
+
+/* Left Pane for Navigation */
+.left-pane {
+    width: 240px;
+    background-color: #1d3557;
+    color: white;
+    padding: 40px 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative; /* For positioning overlay elements if needed */
+}
+
+.left-pane ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.left-pane ul li {
+    margin-bottom: 25px;
+}
+
+.left-pane ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+    padding: 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.left-pane ul li a:hover {
+    background-color: #457b9d;
+    transform: translateX(10px);
+}
+
+/* Right Pane for Main Content */
+.right-pane {
+    flex: 1;
+    padding: 40px;
+    background-color: #f4f6f8;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+    min-width: 0;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Soft inset shadow */
+}
+
+/* Form Styling */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease;
+}
+
+/* Form Inputs */
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #457b9d;
+    box-shadow: 0px 0px 8px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+/* Form Button */
+form button {
+    width: 100%;
+    padding: 15px;
+    background-color: #ffffff;
+    color: #1d3557;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left; /* Align text to the left */
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+form button:hover {
+    background-color: #457b9d;
+    color: white;
+    transform: scale(1.05);
+}
+
+form button.AuthPage {
+    width: auto; /* Adjust width to fit content */
+    padding: 15px 30px;
+    background-color: #457b9d;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for AuthPage button */
+form button.AuthPage:hover {
+    background-color: #ffffff;
+    color: #1d3557;
+    border: 2px solid #1d3557;
+    transform: scale(1.05);
+}
+
+/* Flashcard List */
+/* General Styling for List and Flashcards */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Each Flashcard Item */
+ul li {
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+/* Hover Effect for Flashcard Item */
+ul li:hover {
+    transform: translateY(-5px);
+    background-color: #457b9d;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Link Styling */
+ul li a {
+    display: block;
+    padding: 20px;
+    color: #1d3557; /* Dark text color */
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* When not hovered: Make the text dark on the white background */
+ul li a:not(:hover) {
+    color: #1d3557; /* Dark color for non-hovered state */
+    background-color: transparent; /* Ensure background is transparent */
+}
+
+/* When hovered: Change text and background */
+ul li a:hover {
+    color: white; /* White text on hover */
+    background-color: #1d3557; /* Dark background on hover */
+}
+
+/* Button Links */
+a.button-link {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #e63946;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+a.button-link:hover {
+    background-color: #d62828;
+    transform: scale(1.1);
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    animation: scaleUp 0.3s ease;
+}
+
+.modal-content p {
+    margin: 15px 0;
+    font-size: 16px;
+}
+
+.modal .close {
+    color: #333;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal .close:hover {
+    color: #777;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left-pane {
+        width: 100%;
+        padding: 20px;
+        box-shadow: none;
+    }
+
+    .right-pane {
+        padding: 20px;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    form input[type="text"],
+    form input[type="password"],
+    form input[type="email"],
+    form textarea {
+        font-size: 16px;
+    }
+}

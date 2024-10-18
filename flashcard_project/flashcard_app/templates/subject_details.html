@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <!-- Link to the flashcards.css file -->
+    <link rel="stylesheet" href="{% static 'flashcards.css' %}?v=1.0">
+    <!-- Link to the flashcards.js file -->
+    <script src="{% static 'flashcards.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+    <div class="flashcard-page">
+        <h1>Subject: {{ subject.name }}</h1>
+        <a href="{% url 'add_flashcard' subject.id %}" class="add-flashcard-btn">+ Flashcard</a>
+
+        <!-- Flashcard Grid -->
+        <ul class="flashcard-grid">
+            {% for flashcard in flashcards %}
+                <li class="flashcard-item">
+                    <!-- Flashcard Question (Upper 80%) -->
+                    <a href="javascript:void(0);" class="question" onclick="openModal({{ flashcard.id }})">{{ flashcard.question }}</a>
+
+                    <!-- Actions (Lower 20%) -->
+                    <div class="actions">
+                        <a href="{% url 'edit_flashcard' flashcard.id %}" class="edit-link">Edit</a>
+                        <a href="{% url 'delete_flashcard' flashcard.id %}" class="delete-link">Delete</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Pop-up Modal Structure -->
+    {% for flashcard in flashcards %}
+        <div id="flashcard-modal-{{ flashcard.id }}" class="flashcard-modal" onclick="flipCard({{ flashcard.id }})">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal({{ flashcard.id }}); event.stopPropagation();">&times;</span>
+                <div class="modal-body">
+                    <p class="flashcard-question"><strong>Question:</strong> {{ flashcard.question }}</p>
+                    <p id="answer-{{ flashcard.id }}" class="flashcard-answer" style="display:none;">
+                        <strong>Answer:</strong> {{ flashcard.answer }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

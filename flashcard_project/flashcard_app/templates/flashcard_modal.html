@@ -1,0 +1,30 @@
+{% comment %} <div id="flashcard-modal-{{ flashcard.id }}" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('{{ flashcard.id }}')">&times;</span>
+        <p><strong>Question:</strong> {{ flashcard.question }}</p>
+        <button onclick="turnCard('{{ flashcard.id }}')">Turn</button>
+        <p id="answer-{{ flashcard.id }}" style="display:none;"><strong>Answer:</strong> {{ flashcard.answer }}</p>
+    </div>
+</div>
+
+<script>
+// Open modal
+function openModal(id) {
+    document.getElementById('flashcard-modal-' + id).style.display = 'flex';
+}
+
+// Close modal
+function closeModal(id) {
+    document.getElementById('flashcard-modal-' + id).style.display = 'none';
+}
+
+// Turn card to show answer
+function turnCard(id) {
+    let answerElement = document.getElementById('answer-' + id);
+    if (answerElement.style.display === 'none') {
+        answerElement.style.display = 'block';
+    } else {
+        answerElement.style.display = 'none';
+    }
+}
+</script> {% endcomment %}
